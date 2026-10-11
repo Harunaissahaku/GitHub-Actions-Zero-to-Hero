@@ -1,31 +1,44 @@
-# app.py
-# This is a test 
 
-print("Simple Calculator App")
 
-# Get user input
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
+def add(a, b):
+    return a + b
 
-print("\nChoose an operation:")
-print("1 - Add")
-print("2 - Subtract")
-print("3 - Multiply")
-print("4 - Divide")
 
-choice = input("Enter choice (1/2/3/4): ")
+def subtract(a, b):
+    return a - b
 
-# Perform calculation
-if choice == "1":
-    print("Result:", num1 + num2)
-elif choice == "2":
-    print("Result:", num1 - num2)
-elif choice == "3":
-    print("Result:", num1 * num2)
-elif choice == "4":
-    if num2 != 0:
-        print("Result:", num1 / num2)
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b
+
+
+def main():
+    print("Simple Calculator App")
+
+    first = float(input("Enter first number: "))
+    operator = input("Enter operator (+, -, *, /): ")
+    second = float(input("Enter second number: "))
+
+    if operator == "+":
+        result = add(first, second)
+    elif operator == "-":
+        result = subtract(first, second)
+    elif operator == "*":
+        result = multiply(first, second)
+    elif operator == "/":
+        result = divide(first, second)
     else:
-        print("Error: Cannot divide by zero")
-else:
-    print("Invalid choice")
+        print("Invalid operator")
+        return
+
+    print("Result:", result)
+
+
+if __name__ == "__main__":
+    main()
